@@ -16,7 +16,7 @@ canvas {
 }
 div {
   position: absolute;
-  border: 1px solid rgb(245, 5, 5);
+  border: 1px solid rgba(245, 5, 5, 1);
   height: 300px;
   color: darkred;
   font-size: 2rem;

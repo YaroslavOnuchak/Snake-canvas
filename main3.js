@@ -1,5 +1,5 @@
 ctx.fillStyle = ctx.strokeStyle = "black";
-
+let textE = "Game over";
 let blocksize = 10,
   wInBlock = Math.floor(xS / blocksize),
   hInBlock = Math.floor(yS / blocksize),
@@ -8,7 +8,7 @@ let blocksize = 10,
   fontFamile = "roboto",
   setFont = `${sizeText} ${fontFamile}`,
   /////////////
-  textE = "Game over",
+
   sizeTextE = "2rem",
   fontFamileE = "roboto",
   setTEnd = `${sizeTextE} ${fontFamileE}`,
@@ -21,7 +21,8 @@ let blocksize = 10,
   },
   speed = 100,
   pause = false,
-  gameRest = false;
+  gameRest = false,
+  radiusAnim = blocksize / 2;
 class Apple {
   constructor() {
     this.position = new Block(10, 10);
@@ -185,6 +186,8 @@ function drawGEnd(text, setFon) {
   ctx.textAline = "center";
   ctx.font = setFon;
   ctx.fillText(text, xS / 2, yS / 2);
+  ctx.font = '16px ""';
+  ctx.fillText("press space to restart", xS / 2 - 40, yS / 2 + 20);
 }
 ///////////////////////////////////////////////
 //
@@ -203,6 +206,7 @@ function game() {
     drawBd();
   }, speed);
 }
+
 game();
 // let a = new Block(10, 5),
 // a.drawCircle();
