@@ -103,7 +103,6 @@ class Line {
   kof = 551;
   constructor() {}
   draw() {
-  
     for (let i = 0; i < xS / blocksize; i++) {
       ctx.beginPath();
       ctx.moveTo(i * 20, 0);
