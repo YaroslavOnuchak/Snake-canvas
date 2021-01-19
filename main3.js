@@ -258,3 +258,29 @@ g.addEventListener("keydown", (event) => {
     }
   }
 });
+btnAr.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    let newDirections = this.id;
+    if (newDirections !== undefined) {
+      if (newDirections !== "space") {
+        snake.setDirection(newDirections);
+      } else {
+        if (!pause && !gameRest) {
+          pause = true;
+          clearInterval(intervalId);
+          drawGEnd(textMessag_3, setTEnd, textMessag_2 + textMessag_5, setTEnd);
+        } else if (gameRest) {
+          clearInterval(intterBalls);
+          pause = false;
+          gameRest = false;
+          score = 0;
+          snake = new Snake(5, 5);
+          game();
+        } else {
+          pause = false;
+          game();
+        }
+      }
+    }
+  });
+});
