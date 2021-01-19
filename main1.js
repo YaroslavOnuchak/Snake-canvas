@@ -96,6 +96,7 @@ function ballsF() {
       el.move();
       el.checkVoll();
     });
+    ctx.globalCompositeOperation = "xor";
     line.draw();
     line.move();
 
