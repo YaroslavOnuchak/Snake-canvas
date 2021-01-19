@@ -88,7 +88,7 @@ for (let i = 0; i < 111; i++) {
 let intterBalls;
 let line = new Line();
 function ballsF() {
-  requestAnimationFrame(ballsF);
+  // requestAnimationFrame(ballsF);
   intterBalls = setInterval(() => {
     ctx.clearRect(0, 0, xS, yS);
     drawCel();
@@ -97,10 +97,10 @@ function ballsF() {
       el.move();
       el.checkVoll();
     });
-    ctx.globalCompositeOperation = "xor";
     line.draw();
     line.move();
 
+    ctx.globalCompositeOperation = "xor";
     drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
   }, 100);
 }
