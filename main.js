@@ -1,11 +1,6 @@
 let canv = document.getElementById("canvas"),
   ctx = canv.getContext("2d"),
   btns = document.getElementById("btns"),
-  btnR = document.getElementById("right"),
-  btnL = document.getElementById("left"),
-  btnU = document.getElementById("up"),
-  btnD = document.getElementById("down"),
-  btnS = document.getElementById("space"),
   btnAr = document.querySelectorAll("button");
 
 var w = window,

@@ -102,6 +102,10 @@ class Snake {
     this.segments.unshift(newHead);
     if (newHead.equal(apple.position)) {
       score++;
+      if (this.segments.length > wInBlock * hInBlock - wInBlock) {
+        drawGEnd("maybe YOU win", setFont);
+        return;
+      }
       apple.move();
       this.segments.forEach((snakeB) => {
         if (snakeB.equal(apple.position)) {
