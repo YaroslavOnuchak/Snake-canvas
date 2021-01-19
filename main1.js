@@ -88,6 +88,7 @@ for (let i = 0; i < 111; i++) {
 let intterBalls;
 let line = new Line();
 function ballsF() {
+  requestAnimationFrame(ballsF);
   intterBalls = setInterval(() => {
     ctx.clearRect(0, 0, xS, yS);
     drawCel();
