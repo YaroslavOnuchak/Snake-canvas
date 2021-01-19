@@ -17,7 +17,56 @@ canvas {
 div {
   position: absolute;
   border: 1px solid rgba(245, 5, 5, 1);
-  height: 300px;
+  /* height: 300px; */
   color: darkred;
   font-size: 2rem;
+}
+.wrap-btn {
+  border-style: none;
+  display: flex;
+  position: fixed;
+  width: 7rem;
+  height: 7rem;
+  left: 0;
+  bottom: 0;
+}
+.btn {
+  position: absolute;
+  height: 50px;
+  background: none;
+  outline: none;
+  width: 50px;
+  border: 1px solid red;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+#left {
+  /* left: 100%; */
+  top: 15%;
+}
+#up {
+  left: 50%;
+  top: -30%;
+}
+#right {
+  left: 100%;
+  top: 15%;
+}
+#down {
+  left: 50%;
+  bottom: 0;
+}
+#space {
+  height: 30px;
+  width: 50px;
+  left: 50%;
+  top: 20%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }

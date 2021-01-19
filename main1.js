@@ -86,14 +86,16 @@ for (let i = 0; i < 111; i++) {
   );
 }
 let intterBalls;
+
 function ballsF() {
   intterBalls = setInterval(() => {
     ctx.clearRect(0, 0, xS, yS);
+    drawCel();
     balls.forEach((el) => {
       el.draw();
       el.move();
       el.checkVoll();
     });
-    drawGEnd(textE, setTEnd);
+    drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
   }, 50);
 }

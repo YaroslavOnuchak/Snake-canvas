@@ -1,6 +1,12 @@
 ctx.fillStyle = ctx.strokeStyle = "black";
-let textE = "Game over";
-let blocksize = 10,
+
+let textE = "Game over",
+  textMessag_2 = "press space to ",
+  textMessag_3 = "PAUSE",
+  textMessag_4 = "Start",
+  textMessag_5 = "contine",
+  textMessag_6 = "restart",
+  blocksize = 10,
   wInBlock = Math.floor(xS / blocksize),
   hInBlock = Math.floor(yS / blocksize),
   score = 0,
@@ -9,7 +15,7 @@ let blocksize = 10,
   setFont = `${sizeText} ${fontFamile}`,
   /////////////
 
-  sizeTextE = "2rem",
+  sizeTextE = "1rem",
   fontFamileE = "roboto",
   setTEnd = `${sizeTextE} ${fontFamileE}`,
   direction = {
@@ -20,8 +26,9 @@ let blocksize = 10,
     32: "space",
   },
   speed = 100,
-  pause = false,
+  pause = true,
   gameRest = false,
+  // start = false,
   radiusAnim = blocksize / 2;
 class Apple {
   constructor() {
@@ -31,8 +38,9 @@ class Apple {
     this.position.drawCircle();
   }
   move() {
-    let randomCol = getRandomIntInclusive(1, wInBlock);
-    let randomRow = getRandomIntInclusive(1, hInBlock);
+    let randomCol = getRandomIntInclusive(1, wInBlock - 2);
+    let randomRow = getRandomIntInclusive(1, hInBlock - 2);
+
     this.position = new Block(randomCol, randomRow);
   }
 }
@@ -86,8 +94,8 @@ class Snake {
       newHead = new Block(head.col, head.row - 1);
     }
     if (this.checkCollision(newHead)) {
-      ballsF();
-      drawGEnd(textE, setTEnd);
+      drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
+      setTimeout(ballsF, 1000);
       gameRest = true;
       return;
     }
@@ -95,6 +103,13 @@ class Snake {
     if (newHead.equal(apple.position)) {
       score++;
       apple.move();
+      this.segments.forEach((snakeB) => {
+        if (snakeB.equal(apple.position)) {
+          return;
+        } else {
+          apple.draw();
+        }
+      });
     } else {
       this.segments.pop();
     }
@@ -179,15 +194,17 @@ function drawScore(score, setFon) {
   ctx.font = setFon;
   ctx.fillText(`Score : ${score}`, blocksize, blocksize);
 }
-function drawGEnd(text, setFon) {
+function drawGEnd(text, setFon, text_2, setText_2) {
   clearInterval(intervalId);
   ctx.textBaseline = "middle";
   ctx.fillStyle = "black";
   ctx.textAline = "center";
   ctx.font = setFon;
   ctx.fillText(text, xS / 2, yS / 2);
-  ctx.font = '16px ""';
-  ctx.fillText("press space to restart", xS / 2 - 40, yS / 2 + 20);
+  if (text_2) {
+    ctx.font = setText_2;
+    ctx.fillText(text_2, xS / 2 - 40, yS / 2 + 20);
+  }
 }
 ///////////////////////////////////////////////
 //
@@ -195,6 +212,14 @@ function drawGEnd(text, setFon) {
 let apple = new Apple();
 let snake = new Snake();
 let intervalId;
+
+drawCel();
+drawScore(score, setFont);
+snake.draw();
+apple.draw();
+drawGEnd(textMessag_2 + textMessag_4, setFont);
+drawBd();
+
 function game() {
   intervalId = setInterval(() => {
     ctx.clearRect(0, 0, xS, yS);
@@ -207,12 +232,7 @@ function game() {
   }, speed);
 }
 
-game();
-// let a = new Block(10, 5),
-// a.drawCircle();
-/////////////////
-// h = new Block(111, 5);
-// console.log('h.e', h.equal(a))
+// game();
 
 g.addEventListener("keydown", (event) => {
   let newDirections = direction[event.keyCode];
@@ -223,7 +243,7 @@ g.addEventListener("keydown", (event) => {
       if (!pause && !gameRest) {
         pause = true;
         clearInterval(intervalId);
-        drawGEnd("PAUSE", setTEnd);
+        drawGEnd(textMessag_3, setTEnd, textMessag_2 + textMessag_5, setTEnd);
       } else if (gameRest) {
         clearInterval(intterBalls);
         pause = false;
