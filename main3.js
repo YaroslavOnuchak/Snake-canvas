@@ -45,7 +45,7 @@ class Apple {
   }
 }
 class Snake {
-  constructor(x = 55, y = 5) {
+  constructor(x = 5, y = 5) {
     this.segments = [new Block(x, y), new Block(x - 1, y), new Block(x - 2, y)];
     this.direction = "right";
     this.nextDirection = "right";
@@ -249,7 +249,7 @@ g.addEventListener("keydown", (event) => {
         pause = false;
         gameRest = false;
         score = 0;
-        snake = new Snake(55, 5);
+        snake = new Snake(5, 5);
         game();
       } else {
         pause = false;
