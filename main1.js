@@ -102,5 +102,5 @@ function ballsF() {
     line.move();
 
     drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
-  }, 50);
+  }, 100);
 }
