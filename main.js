@@ -6,7 +6,7 @@ let canv = document.getElementById("canvas"),
   btnU = document.getElementById("up"),
   btnD = document.getElementById("down"),
   btnS = document.getElementById("space"),
-  btnAr = document.querySelectorAll('button')
+  btnAr = document.querySelectorAll("button");
 
 var w = window,
   d = document,
@@ -35,12 +35,13 @@ class Ball {
     this.y = y;
     this.speed = speed;
     this.color = getRandomColorHsl();
+    this.radius = getRandomIntInclusive(3, 33);
   }
   setColor() {}
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.color;
-    ctx.arc(this.x, this.y, 30, 0, Math.PI * 2, false);
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     ctx.fill();
   }
   move() {
@@ -101,4 +102,24 @@ function getRandomColorHsl() {
   return `hsl(${Math.floor(Math.random() * Math.floor(360))}, ${Math.floor(
     Math.random() * Math.floor(100)
   )}%, ${Math.floor(Math.random() * Math.floor(100))}%)`;
+}
+
+class Line {
+  kof = 551;
+  constructor() {}
+  draw() {
+    for (let i = 0; i < xS / blocksize; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * 20, 0);
+      ctx.quadraticCurveTo(this.kof + xS, yS + this.kof, xS - i * 20, yS + i);
+      ctx.stroke();
+    }
+  }
+  move() {
+    if (this.kof > -1500) {
+      this.kof -= 10;
+    } else {
+      this.kof = 555;
+    }
+  }
 }

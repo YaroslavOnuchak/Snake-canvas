@@ -195,15 +195,23 @@ function drawScore(score, setFon) {
   ctx.fillText(`Score : ${score}`, blocksize, blocksize);
 }
 function drawGEnd(text, setFon, text_2, setText_2) {
+  let cenText = xS / 2;
   clearInterval(intervalId);
   ctx.textBaseline = "middle";
   ctx.fillStyle = "black";
   ctx.textAline = "center";
   ctx.font = setFon;
-  ctx.fillText(text, xS / 2, yS / 2);
+
+  while (ctx.measureText(text).width + cenText + blocksize > xS) {
+    cenText--;
+  }
+  if (ctx.measureText(text).width + cenText < xS) {
+    ctx.textAline = "right";
+    ctx.fillText(text, cenText, yS / 2);
+  }
   if (text_2) {
     ctx.font = setText_2;
-    ctx.fillText(text_2, xS / 2 - 40, yS / 2 + 20);
+    ctx.fillText(text_2, cenText - 40, yS / 2 + 20);
   }
 }
 ///////////////////////////////////////////////

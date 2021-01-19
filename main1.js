@@ -81,12 +81,12 @@ for (let i = 0; i < 111; i++) {
     new Ball(
       Math.floor(Math.random() * Math.floor(xS)),
       Math.floor(Math.random() * Math.floor(yS)),
-      200
+      100
     )
   );
 }
 let intterBalls;
-
+let line = new Line();
 function ballsF() {
   intterBalls = setInterval(() => {
     ctx.clearRect(0, 0, xS, yS);
@@ -96,6 +96,9 @@ function ballsF() {
       el.move();
       el.checkVoll();
     });
+    line.draw();
+    line.move();
+
     drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
   }, 50);
 }
