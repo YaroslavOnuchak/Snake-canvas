@@ -99,8 +99,8 @@ function ballsF() {
     });
     line.draw();
     line.move();
-
+    //
     // ctx.globalCompositeOperation = "xor";
     drawGEnd(textE, setFont, textMessag_2 + textMessag_6, setTEnd);
-  }, 100);
+  }, 50);
 }
